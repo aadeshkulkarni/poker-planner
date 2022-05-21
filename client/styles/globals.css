@@ -3,11 +3,11 @@
   --primary-color: #3993ff;
   --primary-back-color: #EDF4FF;
   --primary-shadow-color:#EBF3FF;
-  --primary-box-drop-shadow: -10px -10px 20px #FFFFFF, 10px 10px 20px #B4C1D5;
-  --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #B4C1D5;
+  --primary-box-drop-shadow: -10px -10px 20px #FFFFFF, 10px 10px 20px #91add6;
+  --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #91add6;
   --primary-color-dark : #284B63;
   --text-color:#fff;
-  --padding-m : 1.25rem;
+  --padding-m : 1.5rem;
   --avatar-height:75px;
 }
 
@@ -48,11 +48,10 @@ h1.head__title{
 
 .btn {
   padding: var(--padding-m);
-  color:var(--text-color);
   border:0;
   font-size:1.1rem;
   cursor: pointer;
-  background: var(--primary-color-dark);
+  background: #fff;
   box-shadow: var(--primary-box-drop-shadow);
   border-radius: 100px;
   text-transform: uppercase;

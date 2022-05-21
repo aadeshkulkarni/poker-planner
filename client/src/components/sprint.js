@@ -25,7 +25,7 @@ export default function Sprint() {
                   </span> */}
                </div>
 
-               <button className='btn' onClick={() => Router.push('/sprint-planning')} style={{marginTop:'3rem', width:'100%'}}>Enter Sprint</button>
+               <button className='btn' onClick={() => Router.push('/sprint-planning')} style={{marginTop:'3rem', width:'100%'}}> Sprint &rarr;</button>
             </div>
          </div>
       </>

@@ -63,10 +63,3 @@
    font-size: 2rem;
    cursor: pointer;
 }
-
-.story_points:focus,
-.story_points:hover{
-   box-shadow: var(--primary-box-inset-shadow);
-   transform: scale(0.9);
-
-}
