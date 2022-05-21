@@ -8,7 +8,9 @@ function MyApp({ Component, pageProps }) {
         <meta name='description' content='Scrum poker for agile development teams' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Component {...pageProps} />
+      <div className='container'>
+        <Component {...pageProps} />
+      </div>
     </>
   )
 }
