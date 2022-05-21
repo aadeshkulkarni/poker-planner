@@ -1,0 +1,36 @@
+.container__brand {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 1rem;
+   justify-content: center;
+   align-items: center;
+   padding:1rem;
+   height:100%;
+ }
+ 
+ .container__brand div {
+   height: 100%;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ h1.brand__title{
+   font-size:3.5rem;
+   text-align: center;
+   font-weight:600;
+   margin:1rem auto;
+ }
+ h6.brand__tagline {
+   font-size:1.5rem;
+   margin:1rem auto 3rem;
+   text-align: center;
+   font-weight: 400;
+ }
+ 
+ .placeholder_img{
+   width:75%;
+   height:auto;
+ }
+ 

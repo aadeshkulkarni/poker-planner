@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&display=swap');
 :root {
   --primary-color: #3993ff;
-  --primary-back-color: #fcfcfc;
+  --primary-back-color: #EDF4FF;
+  --primary-shadow-color:#EBF3FF;
+  --primary-box-drop-shadow: -10px -10px 20px #FFFFFF, 10px 10px 20px #B4C1D5;
+  --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #B4C1D5;
+  --primary-color-dark : #284B63;
+  --text-color:#fff;
+  --padding-m : 1.25rem;
+  --avatar-height:75px;
 }
 
 html,
@@ -18,10 +25,11 @@ body {
   height: 100vh;
   padding: 0.5rem;
   background: var(--primary-back-color);
+  position: relative;
 }
 .container__head {
-  height:20%;
   padding:1rem;
+  position: absolute;
 }
 h1.head__title{
   padding-left: 2rem;
@@ -29,44 +37,31 @@ h1.head__title{
   text-transform: uppercase;
   letter-spacing: 0.25rem;
 }
-.container__brand {
-  display: grid;
-  height: 80%;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+
+.container__center{
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding:1rem;
-}
-
-.container__brand div {
-  height: 100%;
-  display:flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height:100%;
 }
 
-h1.brand__title{
-  font-size:3.5rem;
-  text-align: center;
-  font-weight:600;
-}
-h6.brand__tagline {
-  font-size:1.5rem;
-}
 .btn {
-  padding: 1rem;
-  min-width: 250px;
-  background-color: var(--primary-color);
-  color:#FFF;
+  padding: var(--padding-m);
+  color:var(--text-color);
   border:0;
-  border-radius:8px;
   font-size:1.1rem;
   cursor: pointer;
-}
-
-.placeholder-img{
-  width:75%;
-  height:80%;
+  background: var(--primary-color-dark);
+  box-shadow: var(--primary-box-drop-shadow);
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight:300;
+  letter-spacing: 0.1rem;
+  }
+  
+.btn:hover {
+  color:var(--primary-color-dark);
+  background: var(--primary-shadow-color);
+  box-shadow: var(--primary-box-drop-shadow);
 }
