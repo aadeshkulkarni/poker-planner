@@ -1,5 +1,7 @@
 import '../styles/globals.css'
 import Head from 'next/head'
+import { SocketStateProvider } from '../src/hooks/use-socket'
+import { AppStateProvider } from '../src/hooks/use-app-state'
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -9,7 +11,11 @@ function MyApp({ Component, pageProps }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className='container'>
-        <Component {...pageProps} />
+      <AppStateProvider {...pageProps}>
+        <SocketStateProvider>
+          <Component {...pageProps} />
+        </SocketStateProvider>
+        </AppStateProvider>
       </div>
     </>
   )
