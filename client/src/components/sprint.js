@@ -13,7 +13,9 @@ export default function Sprint() {
 
   useEffect(() => {
     if (userName && sprint) {
-      socket.on('SHOW_SPRINT', function (data) {
+      socket.on('NOTIFICATION', function (response) {
+        console.log(response)
+        let data = response?.userInfo || [];
         if (data.length > 0) {
           const isUserValid = data.filter(record => record.userName.toUpperCase() === userName.toUpperCase())
           if (isUserValid && isUserValid.length > 0) {

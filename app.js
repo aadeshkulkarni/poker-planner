@@ -10,7 +10,7 @@ const { v4: uuidv4 } = require('uuid')
 
 /* Env variables */
 const MONGO_URL = 'mongodb+srv://pokerplanner:pokerplanner2022@pokerplanner.wahup.mongodb.net/?retryWrites=true&w=majority'
-const CLIENT_URL = 'http://localhost:3002'
+const CLIENT_URL = 'http://localhost:3000'
 const SERVER_PORT = 4000
 
 /* Creating an express Server and then integrating it with Socketio */
@@ -33,6 +33,27 @@ mongo.connect(MONGO_URL, function (err, client) {
     var db = client.db('pokerplanner')
     let sprint = db.collection('sprints')
     let user = db.collection('users')
+    let story = db.collection('stories')
+
+    function sendNotification(sprintID){
+      let response= {
+        sprintInfo : [],
+        userInfo: [],
+        storyInfo: [],
+        timer:''
+        };
+        sprint.find({sprintID:sprintID}).toArray(function(err,res){
+          response.sprintInfo = res
+        });
+        user.find({sprintID:sprintID}).toArray(function(err,res){
+          response.userInfo = res
+        });
+        story.find({sprintID:sprintID}).toArray(function(err,res){
+          response.storyInfo = res
+        });
+        console.log(response);
+        socket.emit('NOTIFICATION',response)
+    }
 
     socket.on('CREATE__SPRINT', data => {
       const ID = uuidv4()
@@ -41,9 +62,7 @@ mongo.connect(MONGO_URL, function (err, client) {
       const isScrumMaster = 1
       sprint.insertOne({ sprintID: ID, sprintName: name, sprintMaster: username }, function () {
         user.insertOne({ sprintID: ID, userName: username, isScrumMaster: isScrumMaster }, async function () {
-          user.find({ sprintID: ID }, { sprintID: 1, sprintName: 1, userName: 1, _id: 1 }).toArray(function (err, res) {
-            socket.emit('SHOW_SPRINT', res)
-          })
+          sendNotification(ID)
         })
       })
     })
@@ -69,4 +88,17 @@ Joining a sprint
 CREATE__SPRINT (SprintName, Username) => (SprintID, SprintName, username, [Users])
 JOIN__SPRINT (SprintID,Username) => (SprintID, SprintName, username, [Users])
 
+{
+
+sprintInfo : {},
+
+userInfo: [{}],
+
+storyInfo: {},
+
+voteInfo: [{}],
+
+timer:
+
+}
 */
