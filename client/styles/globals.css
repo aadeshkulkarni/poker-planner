@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&display=swap');
 :root {
-  --primary-color: #3993ff;
-  --primary-back-color: #EDF4FF;
+  --primary-color: #284B63;
+  --primary-back-color: #D7E6F9;
   --primary-shadow-color:#EBF3FF;
-  --primary-box-drop-shadow: -10px -10px 20px #FFFFFF, 10px 10px 20px #91add6;
-  --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #91add6;
+  --primary-box-drop-shadow: -4px -4px 8px #FFFFFF, 4px 4px 8px #B4C1D5;
+  --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #B4C1D5;
   --primary-color-dark : #284B63;
   --text-color:#fff;
   --padding-m : 1.5rem;
-  --avatar-height:75px;
+  --avatar-height:3.75rem;
 }
 
 html,
@@ -28,8 +28,8 @@ body {
   position: relative;
 }
 .container__head {
-  padding:1rem;
-  position: absolute;
+  /* padding:1rem; */
+  /* position: absolute; */
 }
 h1.head__title{
   padding-left: 2rem;
@@ -63,4 +63,16 @@ h1.head__title{
   color:var(--primary-color-dark);
   background: var(--primary-shadow-color);
   box-shadow: var(--primary-box-drop-shadow);
+}
+.btn-primary{
+  background: var(--primary-color);
+  outline: none;
+  border: 0;
+  color: #fff;
+  padding:10px 20px;
+  margin-right:20px;
+  margin-top:20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
 }
