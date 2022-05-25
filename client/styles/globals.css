@@ -3,7 +3,7 @@
   --primary-color: #284B63;
   --primary-back-color: #D7E6F9;
   --primary-shadow-color:#EBF3FF;
-  --primary-box-drop-shadow: -4px -4px 8px #FFFFFF, 4px 4px 8px #B4C1D5;
+  --primary-box-drop-shadow: -2px -2px 4px #FFFFFF, 2px 2px 4px #B4C1D5;
   --primary-box-inset-shadow: inset -10px -10px 20px #FFFFFF, inset 10px 10px 20px #B4C1D5;
   --primary-color-dark : #284B63;
   --text-color:#fff;

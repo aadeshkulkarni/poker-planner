@@ -1,11 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import style from '../../styles/sprint-planning-styles.module.css'
 import PokerCards from '../common/poker-cards'
-import { stories } from '../../mock/stories'
+import useSocketState from '../hooks/use-socket'
+import io from 'socket.io-client'
+import { useRouter } from 'next/router';
+import { storiesMock } from '../../mock/stories'
 
 export default function SprintPlanning() {
+  const router = useRouter();
+  // const { getSocket } = useSocketState()
+  // const socket = getSocket()
+  const [modal, setModal] = useState(true);
+  const [description, setDescription] = useState('')
+  const [ac, setAc] = useState('')
+  const [title, setTitle] = useState('')
+  const [stories, setStories] = useState(storiesMock);
+
+  const room = router?.query?.sprintID
+  const socket = io.connect('http://localhost:4000')
+
+  const onAddStoryHandler = () => {
+    if (title) {
+      socket.emit('CREATE_STORY', { title: title, ac: ac, description: description, room: room })
+    }
+  }
+
+
+  useEffect(() => {
+    if (room) {
+      fetch(`http://localhost:4000/getSprintData?sprintId=${room}`, {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(result => {console.log(result)})
+        .catch(error => console.log('error', error));
+    }
+  }, [room])
+
+  useEffect(() => {
+    console.log("socket", socket);
+    socket.on('NOTIFICATION', function (response) {
+      let data = response?.storyInfo || [];
+      if (data.length > 0) {
+        setStories(data)
+      }
+      console.log("response", response);
+    })
+  }, [socket])
+
   return (
-    //top = -(cardheight+avatarheight)
     <>
       <div className='container__head'>
         <h1 className="head__title">Poker planner</h1>
@@ -51,7 +94,7 @@ export default function SprintPlanning() {
 
         </div>
         <div style={{ maxHeight: '90vh', overflowY: 'scroll', overflowX: 'hidden' }}>
-          {stories.map(eachStory => <div className={style.story_cards}>
+          {stories.map((eachStory, index) => <div key={index} className={style.story_cards}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h3 style={{ margin: 0 }}>{eachStory.title}</h3>
               <h3 style={{ margin: 0 }}>{eachStory.storypoints}</h3>
@@ -68,12 +111,30 @@ export default function SprintPlanning() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <button className='btn-primary'>Vote for this issue</button>
-              <button className='btn-primary'>Skip/Hide this issue</button>
+              <button className='btn-primary'>Skip this issue</button>
             </div>
           </div>
           )}
+          {modal && <>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 style={{ margin: 0 }}><input type="text" value={title} onChange={(e) => setTitle(e.target.value)} /></h3>
+              <h3 style={{ margin: 0 }}>{2}</h3>
+            </div>
+            <div>
+              <br />
+              <span><b>Story Description:</b></span>
+              <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div>
+            <div>
+              <br />
+              <span><b>Acceptance Criteria:</b></span>
+              <input type="text" value={ac} onChange={(e) => setAc(e.target.value)} />
+            </div>
+          </>}
+          <button className='btn-primary' style={{ width: '100%' }} onClick={onAddStoryHandler}> + Add Story</button>
         </div>
       </div>
     </>
   )
 }
+

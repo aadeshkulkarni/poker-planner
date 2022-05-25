@@ -1,4 +1,4 @@
-export const stories = [{
+export const storiesMock = [{
    title: '[TTD Dashboard] Config Changes for Focus Month',
    storypoints: 2,
    description: "Every app(ssd, sed, accommodation, PLD) should have it's own calendar config.The data is to be read from AWS config file.",

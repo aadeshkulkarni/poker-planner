@@ -7,13 +7,11 @@ const SocketStateContext = createContext({
 
 export const SocketStateProvider = ({ children }) => {
   const SOCKET_CONN = io.connect('http://localhost:4000')
-  const [socket, setSocket] = useState(SOCKET_CONN)
-  const getSocket = () => socket
 
   return (
     <SocketStateContext.Provider
       value={{
-        getSocket
+        SOCKET_CONN
       }}
     >
       {children}

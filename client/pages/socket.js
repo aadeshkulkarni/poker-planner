@@ -8,7 +8,6 @@ const SocketComponent = () => {
   const [storyList, setStoryList] = useState([])
 
   useEffect(() => {
-      console.log(socket)
     socket.on('STORIES', data => {
       setStoryList([...storyList, data])
     })
