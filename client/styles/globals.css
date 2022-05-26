@@ -76,3 +76,37 @@ h1.head__title{
   cursor: pointer;
   font-size: 1rem;
 }
+
+
+.modal-overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:rgba(0,0,0,0.7);
+}
+.modal-container{
+  min-width:600px;
+  padding:1rem;
+  border-radius:1rem;
+  background-color:#FFF;
+  color:#000;
+}
+.modal-header{
+  padding:1rem;
+}
+.modal-body{
+  padding:1rem;
+}
+.modal-footer{
+  padding:1rem;
+}
+.grid-cols-2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
