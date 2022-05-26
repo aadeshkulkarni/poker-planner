@@ -46,7 +46,6 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
       const storyInfo = await Stories.find({ sprintID: sprintID })
       response.storyInfo = storyInfo
       socket.emit('NOTIFICATION', response)
-
     }
 
     socket.on('CREATE__SPRINT', async data => {
@@ -70,6 +69,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
     socket.on('JOIN__SPRINT', data => {
+      console.log(data);
       if (data.sprintId) {
         sendNotification(data.sprintId)
       }

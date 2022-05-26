@@ -22,7 +22,7 @@ export default function PokerCards(props) {
          <span className={style.team_member_name} style={{ order: order[0] }}>{firstName}</span>
          <img src={`https://avatars.dicebear.com/api/avataaars/${firstName}.svg`}
             style={{ borderRadius: '100%', border: "1px solid #e3e3e3", padding: '0.25rem', margin: '4px 0', width: 'auto', height: 'var(--avatar-height)', order: order[1] }}></img>
-         <div className={style.poker_card} style={{ order: order[2], background: props.background ? props.background : 'var(--primary-color)' }}>
+         <div className={style.poker_card} style={{ order: order[2], background: props.teamMemberName === '' ? '#B4C1D5' : 'var(--primary-color)' }}>
             {`${firstName && firstName[0]}${lastName && lastName[0] ? lastName[0] : ''}`}
          </div>
       </div>
